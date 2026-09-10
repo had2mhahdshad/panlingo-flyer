@@ -19,16 +19,37 @@
   --muted: #686868;
   --light: #9CA3AF;
   --rule: #ECECEC;
+  /* Purple family */
   --lavender: #F1E1F6;
   --lavender-soft: #F0ECFF;
   --lavender-deep: #D4CDF3;
   --lavender-accent: #AB5FD4;
-  --card-pink: #FFEBFD;
-  --card-green: #E1F6E3;
-  --card-red: #FFEEEE;
-  --card-yellow: #FFFBD0;
-  --card-cyan: #E1F6F6;
+  /* Blue family */
+  --blue-light: #D9F5FF;
+  --blue-mid: #AEE4FF;
+  --blue-accent: #12B5F4;
+  --blue-hover: #5777FF;
+  /* Green family */
+  --green-light: #E1F6E3;
+  --green-accent: #31CE7B;
+  /* Warm family */
+  --pink-light: #FFEBFD;
+  --red-light: #FFE9E9;
+  --yellow-light: #FFEFD0;
+  --yellow-accent: #FFB33A;
+  /* Dark family */
+  --dark-purple: #201B3B;
   --btn-dark: #2F3136;
+  /* 8-color cycling palette (linguinity inspired) */
+  --c1: #FFEBFD;
+  --c2: #E1F6E3;
+  --c3: #FFE9E9;
+  --c4: #FFEFD0;
+  --c5: #E1F6F6;
+  --c6: #F1E1F6;
+  --c7: #F0ECFF;
+  --c8: #D9F5FF;
+  /* Radius */
   --radius-lg: 33px;
   --radius-md: 20px;
   --radius-sm: 12px;
@@ -124,93 +145,40 @@ nav {
 }
 .hero-btn:hover { transform: translateY(-2px); }
 
-/* Hero right: abstract dynamic gradient visual */
-.hero-right { flex: 0 0 420px; position: relative; display: flex; align-items: center; justify-content: center; }
+/* Hero right: visual with world map + hello bubbles */
+.hero-right { flex: 0 0 480px; position: relative; display: flex; align-items: center; justify-content: center; }
 @media (max-width: 900px) { .hero-right { display: none; } }
 
 .hero-visual {
-  width: 400px; height: 400px; position: relative;
+  position: relative; width: 460px; height: 460px;
   display: flex; align-items: center; justify-content: center;
-  overflow: hidden; border-radius: 50%;
 }
-.hero-visual-bg {
-  position: absolute; inset: 0; border-radius: 50%;
-  background: conic-gradient(from 0deg at 50% 50%,
-    #F1E1F6 0%, #E8D5F2 15%, #D4CDF3 30%, #F0ECFF 50%,
-    #E8D5F2 65%, #AB5FD4 80%, #F1E1F6 100%);
-  animation: visual-rotate 25s linear infinite;
+.hero-visual-world {
+  width: 100%; height: auto; max-width: 460px;
+  filter: drop-shadow(0 8px 32px rgba(171,95,212,0.08));
+  animation: world-float 6s ease-in-out infinite;
 }
-@keyframes visual-rotate { to { transform: rotate(360deg); } }
-
-.hero-blob {
-  position: absolute; border-radius: 50%;
-  filter: blur(40px); mix-blend-mode: multiply;
-}
-.hero-blob.b1 {
-  width: 220px; height: 220px; background: rgba(171,95,212,0.45);
-  top: 10px; left: 30px;
-  animation: blob-1 8s ease-in-out infinite;
-}
-.hero-blob.b2 {
-  width: 180px; height: 180px; background: rgba(123,47,181,0.35);
-  bottom: 20px; right: 20px;
-  animation: blob-2 10s ease-in-out infinite;
-}
-.hero-blob.b3 {
-  width: 160px; height: 160px; background: rgba(212,205,243,0.5);
-  top: 120px; right: 60px;
-  animation: blob-3 12s ease-in-out infinite;
-}
-.hero-blob.b4 {
-  width: 140px; height: 140px; background: rgba(240,236,255,0.6);
-  bottom: 80px; left: 60px;
-  animation: blob-1 9s ease-in-out infinite reverse;
-}
-@keyframes blob-1 {
-  0%, 100% { transform: translate(0,0) scale(1); }
-  33% { transform: translate(30px,-20px) scale(1.1); }
-  66% { transform: translate(-20px,30px) scale(0.9); }
-}
-@keyframes blob-2 {
-  0%, 100% { transform: translate(0,0) scale(1); }
-  33% { transform: translate(-30px,20px) scale(1.15); }
-  66% { transform: translate(20px,-30px) scale(0.85); }
-}
-@keyframes blob-3 {
-  0%, 100% { transform: translate(0,0) scale(1); }
-  50% { transform: translate(40px,20px) scale(1.2); }
+@keyframes world-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
 
-/* Inner glow ring */
-.hero-visual-ring {
-  position: absolute; border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.4);
-  z-index: 4; pointer-events: none;
+.hero-visual img.hero-bubble-deco {
+  position: absolute; z-index: 2;
 }
-.hero-visual-ring.r1 { width: 380px; height: 380px; animation: visual-rotate 40s linear infinite; }
-.hero-visual-ring.r2 { width: 300px; height: 300px; border-color: rgba(255,255,255,0.25); animation: visual-rotate 30s linear infinite reverse; }
-.hero-visual-ring.r3 { width: 220px; height: 220px; border-color: rgba(255,255,255,0.15); animation: visual-rotate 25s linear infinite; }
-
-/* Floating particles */
-.hero-particle {
-  position: absolute; border-radius: 50%; background: #fff;
-  z-index: 5; opacity: 0.6;
-}
-.hero-particle.p1 { width: 8px; height: 8px; top: 60px; left: 120px; animation: particle-float 6s ease-in-out infinite; }
-.hero-particle.p2 { width: 6px; height: 6px; top: 200px; right: 80px; animation: particle-float 5s ease-in-out infinite 1s; }
-.hero-particle.p3 { width: 10px; height: 10px; bottom: 100px; left: 80px; animation: particle-float 7s ease-in-out infinite 2s; }
-.hero-particle.p4 { width: 5px; height: 5px; bottom: 180px; right: 120px; animation: particle-float 8s ease-in-out infinite 0.5s; }
-.hero-particle.p5 { width: 7px; height: 7px; top: 150px; left: 200px; animation: particle-float 9s ease-in-out infinite 1.5s; }
-@keyframes particle-float {
-  0%, 100% { transform: translate(0,0); opacity: 0.6; }
-  50% { transform: translate(15px,-15px); opacity: 0.9; }
+.hero-bubble-deco.hb1 { top: 0; right: 10px; width: 70px; animation: bubble-float 4s ease-in-out infinite; }
+.hero-bubble-deco.hb2 { top: 60px; left: -10px; width: 55px; animation: bubble-float 5s ease-in-out infinite 1s; }
+.hero-bubble-deco.hb3 { bottom: 80px; right: -15px; width: 60px; animation: bubble-float 6s ease-in-out infinite 2s; }
+.hero-bubble-deco.hb4 { bottom: 20px; left: 30px; width: 50px; animation: bubble-float 4.5s ease-in-out infinite 0.5s; }
+@keyframes bubble-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-/* Glossy overlay */
-.hero-visual-gloss {
-  position: absolute; inset: 0; border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.35) 0%, transparent 50%);
-  z-index: 3; pointer-events: none;
+.hero-visual-glow {
+  position: absolute; inset: -20px; border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, rgba(241,225,246,0.4) 0%, transparent 60%);
+  z-index: 0; pointer-events: none;
 }
 
 /* ===== Brand intro ===== */
@@ -222,31 +190,14 @@ nav {
 .brand-right { flex: 1; }
 .brand-right p { font-size: clamp(0.95rem, 1.5vw, 1.25rem); color: var(--ink-soft); line-height: 1.8; margin-bottom: 20px; }
 
-/* ===== Customer Logo Wall (answerbit inspired) ===== */
+/* ===== Customer Logo Wall ===== */
 .logo-wall-section { padding: 60px 0 40px; }
 .logo-wall-title { text-align: center; font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--muted); margin-bottom: 40px; font-weight: 500; }
-.logo-marquee { overflow: hidden; position: relative; padding: 20px 0; }
-.logo-marquee::before, .logo-marquee::after {
-  content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none;
+.logo-wall-img {
+  width: 100%; max-width: 1200px; margin: 0 auto; display: block;
+  border-radius: var(--radius-lg); overflow: hidden;
 }
-.logo-marquee::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
-.logo-marquee::after { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
-.logo-track { display: flex; gap: 32px; animation: marquee 40s linear infinite; width: max-content; }
-.logo-track:hover { animation-play-state: paused; }
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.logo-item {
-  display: flex; align-items: center; justify-content: center;
-  min-width: 180px; height: 80px; padding: 0 28px;
-  border-radius: var(--radius-md); background: #fff;
-  border: 1px solid var(--rule); transition: all 0.3s ease;
-  flex-shrink: 0;
-}
-.logo-item:hover { border-color: var(--lavender-deep); box-shadow: 0 6px 24px rgba(171,95,212,0.1); transform: translateY(-3px) scale(1.03); }
-.logo-item svg { max-width: 100%; max-height: 40px; height: auto; }
-@media (max-width: 768px) {
-  .logo-item { min-width: 140px; height: 64px; }
-  .logo-item svg { max-height: 32px; }
-}
+.logo-wall-img img { width: 100%; height: auto; display: block; }
 
 /* ===== Stats ===== */
 .stats-row {
@@ -286,14 +237,14 @@ nav {
   display: flex; flex-direction: column;
 }
 .feature-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
-.feature-card:nth-child(8n+1) { background: var(--card-pink); }
-.feature-card:nth-child(8n+2) { background: var(--card-green); }
-.feature-card:nth-child(8n+3) { background: var(--card-red); }
-.feature-card:nth-child(8n+4) { background: var(--card-yellow); }
-.feature-card:nth-child(8n+5) { background: var(--card-cyan); }
-.feature-card:nth-child(8n+6) { background: var(--card-pink); }
-.feature-card:nth-child(8n+7) { background: var(--card-green); }
-.feature-card:nth-child(8n+8) { background: var(--card-yellow); }
+.feature-card:nth-child(8n+1) { background: var(--c1); }
+.feature-card:nth-child(8n+2) { background: var(--c2); }
+.feature-card:nth-child(8n+3) { background: var(--c3); }
+.feature-card:nth-child(8n+4) { background: var(--c4); }
+.feature-card:nth-child(8n+5) { background: var(--c5); }
+.feature-card:nth-child(8n+6) { background: var(--c6); }
+.feature-card:nth-child(8n+7) { background: var(--c7); }
+.feature-card:nth-child(8n+8) { background: var(--c8); }
 .feature-card h4 { font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; color: var(--ink); }
 .feature-card p { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.65; }
 
@@ -320,7 +271,7 @@ nav {
 .ps-card-body p { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7; }
 
 /* ===== Language Coverage ===== */
-.lang-section { background: var(--lavender-soft); padding: 70px 0; }
+.lang-section { background: var(--blue-light); padding: 70px 0; }
 .lang-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px; }
 @media (max-width: 768px) { .lang-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 480px) { .lang-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -437,11 +388,11 @@ nav {
 .case-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.05); }
 .case-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
 .case-logo {
-  width: 56px; height: 56px; border-radius: var(--radius-sm);
+  width: 72px; height: 56px; border-radius: var(--radius-sm);
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  background: #fff; border: 1px solid var(--rule);
+  background: #fff; border: 1px solid var(--rule); padding: 8px;
 }
-.case-logo svg { max-width: 40px; max-height: 32px; }
+.case-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
 .case-title h4 { font-size: 1.1rem; margin-bottom: 4px; }
 .case-sub { font-size: 0.78rem; color: var(--lavender-accent); }
 .case-block { margin-bottom: 14px; }
@@ -486,7 +437,7 @@ nav {
 .faq-body p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.75; }
 
 /* ===== Contact CTA ===== */
-.contact-section { background: var(--lavender-soft); padding: 80px 0; text-align: center; }
+.contact-section { background: var(--blue-light); padding: 80px 0; text-align: center; }
 .contact-section h2 { font-size: clamp(1.6rem, 3.5vw, 2.8rem); font-weight: 500; margin-bottom: 16px; }
 .contact-section p { font-size: 1.05rem; color: var(--ink-soft); margin-bottom: 32px; }
 .contact-cta { display: inline-block; padding: 16px 48px; background: var(--btn-dark); color: #fff; font-weight: 500; font-size: 1.1rem; border-radius: 100px; transition: transform 0.2s ease; }
@@ -650,20 +601,12 @@ footer p { font-size: 0.8rem; }
       </div>
       <div class="hero-right">
         <div class="hero-visual">
-          <div class="hero-visual-bg"></div>
-          <div class="hero-blob b1"></div>
-          <div class="hero-blob b2"></div>
-          <div class="hero-blob b3"></div>
-          <div class="hero-blob b4"></div>
-          <div class="hero-visual-gloss"></div>
-          <div class="hero-visual-ring r1"></div>
-          <div class="hero-visual-ring r2"></div>
-          <div class="hero-visual-ring r3"></div>
-          <div class="hero-particle p1"></div>
-          <div class="hero-particle p2"></div>
-          <div class="hero-particle p3"></div>
-          <div class="hero-particle p4"></div>
-          <div class="hero-particle p5"></div>
+          <div class="hero-visual-glow"></div>
+          <img class="hero-visual-world" src="./assets/linguinity/world.png" alt="Global Language Coverage">
+          <img class="hero-bubble-deco hb1" src="./assets/linguinity/hello-1.png" alt="Hello">
+          <img class="hero-bubble-deco hb2" src="./assets/linguinity/hello-2.png" alt="안녕">
+          <img class="hero-bubble-deco hb3" src="./assets/linguinity/hello-3.png" alt="Bonjour">
+          <img class="hero-bubble-deco hb4" src="./assets/linguinity/hello-4.png" alt="你好">
         </div>
       </div>
     </div>
@@ -690,28 +633,8 @@ footer p { font-size: 0.8rem; }
 <section class="logo-wall-section">
   <div class="main">
     <p class="logo-wall-title">泛邻译者长期助力全球卓越品牌实现高质量传播</p>
-    <div class="logo-marquee">
-      <div class="logo-track">
-        <div class="logo-item"><svg viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg"><text x="70" y="36" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="26" fill="#1a1a1a">腾讯</text></svg></div>
-        <div class="logo-item"><svg viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg"><text x="70" y="34" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="20" fill="#1a1a1a" letter-spacing="3">HONOR</text></svg></div>
-        <div class="logo-item"><svg viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg"><text x="70" y="35" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="22" fill="#1a1a1a" letter-spacing="2">PUBG</text></svg></div>
-        <div class="logo-item"><svg viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg"><text x="70" y="35" text-anchor="middle" font-family="Georgia,serif" font-weight="400" font-size="24" fill="#1a1a1a">Dior</text></svg></div>
-        <div class="logo-item"><svg viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg"><text x="70" y="35" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="600" font-size="22" fill="#1a1a1a" letter-spacing="1">MFK</text></svg></div>
-        <div class="logo-item"><svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg"><text x="80" y="34" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="400" font-size="15" fill="#1a1a1a" letter-spacing="4">BALENCIAGA</text></svg></div>
-        <div class="logo-item"><svg viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg"><text x="70" y="36" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="20" fill="#1a1a1a">上海电气</text></svg></div>
-        <div class="logo-item"><svg viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg"><text x="70" y="35" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="600" font-size="22" fill="#1a1a1a">amiro</text></svg></div>
-        <div class="logo-item"><svg viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg"><text x="70" y="36" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="24" fill="#1a1a1a">汉仪</text></svg></div>
-        <!-- duplicate for seamless loop -->
-        <div class="logo-item"><svg viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg"><text x="70" y="36" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="26" fill="#1a1a1a">腾讯</text></svg></div>
-        <div class="logo-item"><svg viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg"><text x="70" y="34" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="20" fill="#1a1a1a" letter-spacing="3">HONOR</text></svg></div>
-        <div class="logo-item"><svg viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg"><text x="70" y="35" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="22" fill="#1a1a1a" letter-spacing="2">PUBG</text></svg></div>
-        <div class="logo-item"><svg viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg"><text x="70" y="35" text-anchor="middle" font-family="Georgia,serif" font-weight="400" font-size="24" fill="#1a1a1a">Dior</text></svg></div>
-        <div class="logo-item"><svg viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg"><text x="70" y="35" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="600" font-size="22" fill="#1a1a1a" letter-spacing="1">MFK</text></svg></div>
-        <div class="logo-item"><svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg"><text x="80" y="34" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="400" font-size="15" fill="#1a1a1a" letter-spacing="4">BALENCIAGA</text></svg></div>
-        <div class="logo-item"><svg viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg"><text x="70" y="36" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="20" fill="#1a1a1a">上海电气</text></svg></div>
-        <div class="logo-item"><svg viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg"><text x="70" y="35" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="600" font-size="22" fill="#1a1a1a">amiro</text></svg></div>
-        <div class="logo-item"><svg viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg"><text x="70" y="36" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="24" fill="#1a1a1a">汉仪</text></svg></div>
-      </div>
+    <div class="logo-wall-img">
+      <img src="./assets/linguinity/logo-wall-0.png" alt="客户品牌 Logo 墙" loading="lazy">
     </div>
   </div>
 </section>
@@ -762,34 +685,34 @@ footer p { font-size: 0.8rem; }
 </section>
 
 <!-- ===== Problem-Solution 1 ===== -->
-<section class="ps-section">
+<section class="ps-section" style="background: var(--dark-purple); color: #fff;">
   <div class="main">
     <div class="ps-split">
       <div class="ps-left">
-        <span class="sec-label">语言挑战</span>
-        <h2>以卓越品质<br>沉淀战略资产</h2>
+        <span class="sec-label" style="background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9);">语言挑战</span>
+        <h2 style="color: #fff;">以卓越品质<br>沉淀战略资产</h2>
       </div>
       <div class="ps-right">
         <div class="ps-cards">
-          <div class="ps-card">
+          <div class="ps-card" style="border-color: rgba(255,255,255,0.15);">
             <div class="ps-card-num">01</div>
             <div class="ps-card-body">
-              <h4>术语混乱、表达不一？</h4>
-              <p>我们力求忠于企业形象，深挖行业背景与专业知识，为企业宣传量身打造精准全面的语料库与知识库，确保品牌信息的一致性与专业性。</p>
+              <h4 style="color: #fff;">术语混乱、表达不一？</h4>
+              <p style="color: rgba(255,255,255,0.7);">我们力求忠于企业形象，深挖行业背景与专业知识，为企业宣传量身打造精准全面的语料库与知识库，确保品牌信息的一致性与专业性。</p>
             </div>
           </div>
-          <div class="ps-card">
+          <div class="ps-card" style="border-color: rgba(255,255,255,0.15);">
             <div class="ps-card-num">02</div>
             <div class="ps-card-body">
-              <h4>稿件合规但不打动人？</h4>
-              <p>我们深入洞察客户需求，根据专业语言能力和文体要求进行二次润色，让文本更臻完美，兼具美感与说服力。</p>
+              <h4 style="color: #fff;">稿件合规但不打动人？</h4>
+              <p style="color: rgba(255,255,255,0.7);">我们深入洞察客户需求，根据专业语言能力和文体要求进行二次润色，让文本更臻完美，兼具美感与说服力。</p>
             </div>
           </div>
-          <div class="ps-card">
+          <div class="ps-card" style="border-color: rgba(255,255,255,0.15);">
             <div class="ps-card-num">03</div>
             <div class="ps-card-body">
-              <h4>文化隔阂、语感生硬？</h4>
-              <p>我们在翻译过程中充分考虑目标语言的文化背景与情感倾向，规避文化误解，提升译文的文化契合度与感染力。</p>
+              <h4 style="color: #fff;">文化隔阂、语感生硬？</h4>
+              <p style="color: rgba(255,255,255,0.7);">我们在翻译过程中充分考虑目标语言的文化背景与情感倾向，规避文化误解，提升译文的文化契合度与感染力。</p>
             </div>
           </div>
         </div>
@@ -799,7 +722,7 @@ footer p { font-size: 0.8rem; }
 </section>
 
 <!-- ===== Problem-Solution 2 ===== -->
-<section class="ps-section" style="background: var(--lavender-soft);">
+<section class="ps-section" style="background: var(--yellow-light);">
   <div class="main">
     <div class="ps-split">
       <div class="ps-left">
@@ -1170,7 +1093,7 @@ footer p { font-size: 0.8rem; }
 </section>
 
 <!-- ===== Cases ===== -->
-<section id="cases" style="background: var(--lavender-soft);">
+<section id="cases" style="background: var(--green-light);">
   <div class="main">
     <div class="sec-block" style="padding: 0 0 0;">
       <span class="sec-label">客户案例</span>
@@ -1180,7 +1103,7 @@ footer p { font-size: 0.8rem; }
     <div class="case-grid">
       <div class="case-card">
         <div class="case-header">
-          <div class="case-logo"><svg viewBox="0 0 50 40" xmlns="http://www.w3.org/2000/svg"><text x="25" y="28" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="18" fill="#1a1a1a">腾讯</text></svg></div>
+          <div class="case-logo"><img src="./assets/case-logos/tencent.png" alt="腾讯"></div>
           <div class="case-title">
             <h4>腾讯 · 云计算/智能驾驶地图文档翻译</h4>
             <div class="case-sub">2023-2024 · 两年持续合作</div>
@@ -1195,7 +1118,7 @@ footer p { font-size: 0.8rem; }
 
       <div class="case-card">
         <div class="case-header">
-          <div class="case-logo"><svg viewBox="0 0 50 40" xmlns="http://www.w3.org/2000/svg"><text x="25" y="26" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="14" fill="#1a1a1a" letter-spacing="1.5">HONOR</text></svg></div>
+          <div class="case-logo"><img src="./assets/case-logos/honor.png" alt="荣耀"></div>
           <div class="case-title">
             <h4>荣耀 · 新手机广告多国语本地化</h4>
             <div class="case-sub">十余个语种 · 字幕+文案</div>
@@ -1210,7 +1133,7 @@ footer p { font-size: 0.8rem; }
 
       <div class="case-card">
         <div class="case-header">
-          <div class="case-logo"><svg viewBox="0 0 50 40" xmlns="http://www.w3.org/2000/svg"><text x="25" y="27" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="15" fill="#1a1a1a" letter-spacing="1">PUBG</text></svg></div>
+          <div class="case-logo"><img src="./assets/case-logos/pubg.png" alt="PUBG"></div>
           <div class="case-title">
             <h4>腾讯游戏 ·《绝地求生》国服语言支持</h4>
             <div class="case-sub">玩家内容 · 运营文档 · 长期合作</div>
@@ -1225,7 +1148,7 @@ footer p { font-size: 0.8rem; }
 
       <div class="case-card">
         <div class="case-header">
-          <div class="case-logo"><svg viewBox="0 0 50 40" xmlns="http://www.w3.org/2000/svg"><text x="25" y="27" text-anchor="middle" font-family="Georgia,serif" font-weight="400" font-size="16" fill="#1a1a1a">Dior</text></svg></div>
+          <div class="case-logo"><img src="./assets/case-logos/dior.png" alt="Dior"></div>
           <div class="case-title">
             <h4>MFK / Dior / 巴黎世家 · 奢侈品内容创译</h4>
             <div class="case-sub">每季新品 · 多矩阵创译</div>
@@ -1240,7 +1163,7 @@ footer p { font-size: 0.8rem; }
 
       <div class="case-card">
         <div class="case-header">
-          <div class="case-logo"><svg viewBox="0 0 50 40" xmlns="http://www.w3.org/2000/svg"><text x="25" y="28" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="14" fill="#1a1a1a">电气</text></svg></div>
+          <div class="case-logo"><img src="./assets/case-logos/shanghai-electric.png" alt="上海电气"></div>
           <div class="case-title">
             <h4>上海电气 · 海外宣传材料翻译与英文撰稿</h4>
             <div class="case-sub">连续三年 · 国企出海</div>
@@ -1255,7 +1178,7 @@ footer p { font-size: 0.8rem; }
 
       <div class="case-card">
         <div class="case-header">
-          <div class="case-logo"><svg viewBox="0 0 50 40" xmlns="http://www.w3.org/2000/svg"><text x="25" y="27" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="600" font-size="15" fill="#1a1a1a">APP</text></svg></div>
+          <div class="case-logo"><span style="font-family:'BricolageGrotesque',sans-serif;font-weight:700;font-size:0.9rem;color:var(--ink);">设计APP</span></div>
           <div class="case-title">
             <h4>某设计 APP · 界面本地化与技术流程优化</h4>
             <div class="case-sub">UI 翻译 · JSON 集成 · 流程再造</div>
@@ -1269,7 +1192,7 @@ footer p { font-size: 0.8rem; }
 
       <div class="case-card">
         <div class="case-header">
-          <div class="case-logo"><svg viewBox="0 0 50 40" xmlns="http://www.w3.org/2000/svg"><text x="25" y="27" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="600" font-size="15" fill="#1a1a1a">amiro</text></svg></div>
+          <div class="case-logo"><span style="font-family:'BricolageGrotesque',sans-serif;font-weight:600;font-size:0.9rem;color:var(--ink);">Amiro</span></div>
           <div class="case-title">
             <h4>Amiro 觅光 · 海外电商美容仪文案本地化</h4>
             <div class="case-sub">电商平台 · SEO 文案优化</div>
@@ -1284,7 +1207,7 @@ footer p { font-size: 0.8rem; }
 
       <div class="case-card">
         <div class="case-header">
-          <div class="case-logo"><svg viewBox="0 0 50 40" xmlns="http://www.w3.org/2000/svg"><text x="25" y="27" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="13" fill="#1a1a1a">短剧</text></svg></div>
+          <div class="case-logo"><span style="font-family:'BricolageGrotesque',sans-serif;font-weight:700;font-size:0.85rem;color:var(--ink);">短剧</span></div>
           <div class="case-title">
             <h4>短剧批量翻译 · 人机共译模式</h4>
             <div class="case-sub">批量交付 · 成本可控 · 口语化翻译</div>
@@ -1298,7 +1221,7 @@ footer p { font-size: 0.8rem; }
 
       <div class="case-card">
         <div class="case-header">
-          <div class="case-logo"><svg viewBox="0 0 50 40" xmlns="http://www.w3.org/2000/svg"><text x="25" y="28" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="16" fill="#1a1a1a">汉仪</text></svg></div>
+          <div class="case-logo"><span style="font-family:'BricolageGrotesque',sans-serif;font-weight:700;font-size:0.9rem;color:var(--ink);">汉仪</span></div>
           <div class="case-title">
             <h4>汉仪 × 游戏字体设计 · 多语言内容支持</h4>
             <div class="case-sub">命名文案 · 概念阐述 · 全球宣发</div>
@@ -1337,7 +1260,7 @@ footer p { font-size: 0.8rem; }
 </section>
 
 <!-- ===== FAQ (answerbit inspired) ===== -->
-<section class="faq-section" id="faq" style="background: var(--lavender-soft);">
+<section class="faq-section" id="faq" style="background: var(--blue-light);">
   <div class="main">
     <div class="sec-block" style="padding: 0 0 0; text-align: center;">
       <span class="sec-label">常见问题</span>
