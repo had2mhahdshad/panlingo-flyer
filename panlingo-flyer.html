@@ -152,6 +152,7 @@ nav {
 .hero-visual {
   position: relative; width: 460px; height: 460px;
   display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
 }
 .hero-visual-world {
   width: 100%; height: auto; max-width: 460px;
@@ -167,9 +168,9 @@ nav {
   position: absolute; z-index: 2;
 }
 .hero-bubble-deco.hb1 { top: 0; right: 10px; width: 70px; animation: bubble-float 4s ease-in-out infinite; }
-.hero-bubble-deco.hb2 { top: 60px; left: -10px; width: 55px; animation: bubble-float 5s ease-in-out infinite 1s; }
-.hero-bubble-deco.hb3 { bottom: 80px; right: -15px; width: 60px; animation: bubble-float 6s ease-in-out infinite 2s; }
-.hero-bubble-deco.hb4 { bottom: 20px; left: 30px; width: 50px; animation: bubble-float 4.5s ease-in-out infinite 0.5s; }
+.hero-bubble-deco.hb2 { top: 60px; left: 10px; width: 55px; animation: bubble-float 5s ease-in-out infinite 1s; }
+.hero-bubble-deco.hb3 { bottom: 80px; right: 0; width: 60px; animation: bubble-float 6s ease-in-out infinite 2s; }
+.hero-bubble-deco.hb4 { bottom: 20px; left: 40px; width: 50px; animation: bubble-float 4.5s ease-in-out infinite 0.5s; }
 @keyframes bubble-float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -280,11 +281,11 @@ nav {
 
 /* ===== Language Coverage ===== */
 .lang-section { background: var(--blue-light); padding: 70px 0; }
-.lang-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px; }
+.lang-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 32px; }
 @media (max-width: 768px) { .lang-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 480px) { .lang-grid { grid-template-columns: repeat(2, 1fr); } }
 .lang-card {
-  background: #fff; border-radius: var(--radius-md); padding: 24px 16px 20px;
+  background: #fff; border-radius: var(--radius-sm); padding: 14px 10px 12px;
   text-align: center; transition: all 0.3s ease; position: relative; overflow: hidden;
   border: 1px solid transparent;
 }
@@ -295,10 +296,10 @@ nav {
 }
 .lang-card:hover { transform: translateY(-4px); border-color: var(--blue-mid); box-shadow: 0 8px 28px rgba(18,181,244,0.1); }
 .lang-card:hover::before { opacity: 1; }
-.lang-flag { font-size: 2rem; line-height: 1; margin-bottom: 10px; display: block; }
-.lang-icon { font-family: 'BricolageGrotesque', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--blue-accent); margin-bottom: 4px; }
-.lang-name { font-size: 0.88rem; font-weight: 700; color: var(--ink); }
-.lang-dir { font-size: 0.68rem; color: var(--muted); margin-top: 6px; font-family: 'IBMPlexMono', monospace; background: var(--blue-light); border-radius: 6px; padding: 3px 8px; display: inline-block; }
+.lang-flag { font-size: 1.6rem; line-height: 1; margin-bottom: 4px; display: block; }
+.lang-icon { font-family: 'BricolageGrotesque', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--blue-accent); margin-bottom: 2px; }
+.lang-name { font-size: 0.8rem; font-weight: 700; color: var(--ink); }
+.lang-dir { font-size: 0.62rem; color: var(--muted); margin-top: 4px; font-family: 'IBMPlexMono', monospace; background: var(--blue-light); border-radius: 4px; padding: 2px 6px; display: inline-block; }
 
 /* ===== Customer Benefits ===== */
 .benefit-section { padding: 70px 0; }
@@ -340,10 +341,28 @@ nav {
 .service-block { margin-bottom: 40px; }
 .service-cat-title { font-size: 1.2rem; font-weight: 500; color: var(--ink); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; padding-bottom: 12px; border-bottom: 2px solid var(--c2); }
 .service-cat-num { width: 32px; height: 32px; border-radius: 10px; background: var(--green-light); color: var(--green-accent); font-size: 0.8rem; font-family: 'BricolageGrotesque', sans-serif; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+/* Category A: blue */
+.service-block.cat-a .service-cat-num { background: var(--blue-light); color: var(--blue-accent); }
+.service-block.cat-a .service-cat-title { border-bottom-color: var(--c8); }
+.service-block.cat-a .service-item:hover { border-color: var(--blue-accent); }
+.service-block.cat-a .service-examples { background: var(--c8); }
+.service-block.cat-a .service-meta-tag { background: var(--blue-light); color: var(--blue-accent); }
+/* Category B: lavender */
+.service-block.cat-b .service-cat-num { background: var(--lavender-soft); color: var(--lavender-accent); }
+.service-block.cat-b .service-cat-title { border-bottom-color: var(--c6); }
+.service-block.cat-b .service-item:hover { border-color: var(--lavender-accent); }
+.service-block.cat-b .service-examples { background: var(--c6); }
+.service-block.cat-b .service-meta-tag { background: var(--lavender-soft); color: var(--lavender-accent); }
+/* Category C: warm yellow */
+.service-block.cat-c .service-cat-num { background: var(--yellow-light); color: var(--yellow-accent); }
+.service-block.cat-c .service-cat-title { border-bottom-color: var(--c4); }
+.service-block.cat-c .service-item:hover { border-color: var(--yellow-accent); }
+.service-block.cat-c .service-examples { background: var(--c4); }
+.service-block.cat-c .service-meta-tag { background: var(--yellow-light); color: var(--yellow-accent); }
 .service-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 @media (max-width: 768px) { .service-list { grid-template-columns: 1fr; } }
 .service-item { background: #fff; border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 28px; transition: all 0.2s ease; }
-.service-item:hover { border-color: var(--green-accent); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+.service-item:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
 .service-item h4 { font-size: 1rem; font-weight: 500; margin-bottom: 8px; }
 .service-desc { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.65; margin-bottom: 12px; }
 .service-examples { font-size: 0.78rem; color: var(--muted); line-height: 1.65; margin-bottom: 12px; padding: 10px 14px; background: var(--green-light); border-radius: var(--radius-sm); }
@@ -571,10 +590,9 @@ footer p { font-size: 0.8rem; }
       <div class="nav-brand-name">Panlingo 泛邻</div>
     </div>
     <div class="nav-links">
-      <a href="#about">关于</a>
       <a href="#services">服务</a>
       <a href="#cases">案例</a>
-      <a href="#faq">常见问题</a>
+      <a href="#coop">合作</a>
       <a href="#contact">联系</a>
     </div>
     <a class="nav-cta" href="#contact">详询报价</a>
@@ -621,151 +639,6 @@ footer p { font-size: 0.8rem; }
   </div>
 </section>
 
-<!-- ===== Brand Intro ===== -->
-<section class="brand-section" id="about">
-  <div class="main">
-    <div class="brand-split">
-      <div class="brand-left">
-        <h2 style="width: 336.469px; height: 238.234px; font-size: 37px;">守护品牌声音<br>放大内容价值<br>驱动全球传播</h2>
-      </div>
-      <div class="brand-right">
-        <p>泛邻 Panlingo，汉仪字库旗下全球化语言解决方案品牌。定位为面向全球企业的多语言内容管理服务品牌，帮助企业持续、稳定地完成多语言内容交付。</p>
-        <p>我们以母语级专家团队为核心，打造"专家译员 + AI 辅助"的人机协同敏捷交付体系。泛邻资深译者平均具备 10 年以上行业经验，覆盖多语种，广泛服务于世界 500 强、跨国集团、新兴产业领军者及政府机构。我们帮助全球企业管理多语言内容，赋能本地化落地，助力品牌在跨文化传播中保持一致的声音与辨识度。</p>
-      </div>
-    </div>
-    
-  </div>
-</section>
-
-<!-- ===== Customer Logo Wall (answerbit inspired) ===== -->
-<section class="logo-wall-section">
-  <div class="main">
-    <p class="logo-wall-title">泛邻译者长期助力全球卓越品牌实现高质量传播</p>
-    <div class="logo-wall-img">
-      <img src="./assets/linguinity/logo-wall-0.png" alt="客户品牌 Logo 墙" loading="lazy">
-    </div>
-  </div>
-</section>
-
-<!-- ===== Features (carousel style cards) ===== -->
-<section class="features-section">
-  <div class="main">
-    <div class="sec-block" style="padding: 0 0 0;">
-      <span class="sec-label">核心优势</span>
-      <h2>以客户价值为导向<br>赋能全球一流沟通表现</h2>
-      <p class="sec-desc" style="width: 848.172px; height: 62.5625px; font-size: 17px;">以精湛语言能力为核心，整合多元延伸服务，全方位赋能客户内容的本地化落地与传播影响力。</p>
-    </div>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <h4>专家级创译能力</h4>
-        <p>内容与调性精准双达，不止翻译，更助力品牌出海全局思考。</p>
-      </div>
-      <div class="feature-card">
-        <h4>术语库+标准化流程</h4>
-        <p>构建高一致性语言资产，确保品牌信息跨项目、跨语种统一。</p>
-      </div>
-      <div class="feature-card">
-        <h4>资深译审质控</h4>
-        <p>保障译文卓越品质，精心打磨每一处细节。</p>
-      </div>
-      <div class="feature-card">
-        <h4>差异化表达体系</h4>
-        <p>助力品牌识别，让翻译不止准确，更具品牌辨识度。</p>
-      </div>
-      <div class="feature-card">
-        <h4>自研技术加持</h4>
-        <p>助力精准高效交付，AI 辅助提效与专家判断深度结合。</p>
-      </div>
-      <div class="feature-card">
-        <h4>文化语境匹配</h4>
-        <p>沟通更有共鸣，充分考虑目标语言的文化背景与情感倾向。</p>
-      </div>
-      <div class="feature-card">
-        <h4>多服务整合</h4>
-        <p>上下游需求一站搞定，从翻译到排版到多媒体全覆盖。</p>
-      </div>
-      <div class="feature-card">
-        <h4>成本可预测</h4>
-        <p>服务方案可扩展，兼顾质量与效率，交付节奏可预期。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Problem-Solution 1 ===== -->
-<section class="ps-section" style="background: var(--dark-purple); color: #fff;">
-  <div class="main">
-    <div class="ps-split">
-      <div class="ps-left">
-        <span class="sec-label" style="background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9);">语言挑战</span>
-        <h2 style="color: #fff;">以卓越品质<br>沉淀战略资产</h2>
-      </div>
-      <div class="ps-right">
-        <div class="ps-cards">
-          <div class="ps-card" style="border-color: rgba(255,255,255,0.15);">
-            <div class="ps-card-num">01</div>
-            <div class="ps-card-body">
-              <h4 style="color: #fff;">术语混乱、表达不一？</h4>
-              <p style="color: rgba(255,255,255,0.7);">我们力求忠于企业形象，深挖行业背景与专业知识，为企业宣传量身打造精准全面的语料库与知识库，确保品牌信息的一致性与专业性。</p>
-            </div>
-          </div>
-          <div class="ps-card" style="border-color: rgba(255,255,255,0.15);">
-            <div class="ps-card-num">02</div>
-            <div class="ps-card-body">
-              <h4 style="color: #fff;">稿件合规但不打动人？</h4>
-              <p style="color: rgba(255,255,255,0.7);">我们深入洞察客户需求，根据专业语言能力和文体要求进行二次润色，让文本更臻完美，兼具美感与说服力。</p>
-            </div>
-          </div>
-          <div class="ps-card" style="border-color: rgba(255,255,255,0.15);">
-            <div class="ps-card-num">03</div>
-            <div class="ps-card-body">
-              <h4 style="color: #fff;">文化隔阂、语感生硬？</h4>
-              <p style="color: rgba(255,255,255,0.7);">我们在翻译过程中充分考虑目标语言的文化背景与情感倾向，规避文化误解，提升译文的文化契合度与感染力。</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Problem-Solution 2 ===== -->
-<section class="ps-section" style="background: var(--yellow-light);">
-  <div class="main">
-    <div class="ps-split">
-      <div class="ps-left">
-        <span class="sec-label">化挑战为动力</span>
-        <h2>化语言挑战<br>为业务动力</h2>
-      </div>
-      <div class="ps-right">
-        <div class="ps-cards">
-          <div class="ps-card" style="border-bottom-color: var(--lavender-deep);">
-            <div class="ps-card-num">01</div>
-            <div class="ps-card-body">
-              <h4>风格不符、品牌失焦？</h4>
-              <p>我们广泛参考国际品牌的最佳实践，为客户精准匹配最契合其品牌调性的表达风格，助力企业提升全球市场竞争力。</p>
-            </div>
-          </div>
-          <div class="ps-card" style="border-bottom-color: var(--lavender-deep);">
-            <div class="ps-card-num">02</div>
-            <div class="ps-card-body">
-              <h4>时间紧、需求急？</h4>
-              <p>通过高效沟通机制，我们精准理解客户需求，灵活应对紧急项目，为客户节省时间与精力。</p>
-            </div>
-          </div>
-          <div class="ps-card" style="border-bottom-color: var(--lavender-deep);">
-            <div class="ps-card-num">03</div>
-            <div class="ps-card-body">
-              <h4>担心质量不稳？</h4>
-              <p>我们专注服务注重语言价值的高要求客户，倾注充足精力于每一篇文稿，精心打磨每一处细节。</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== Language Coverage ===== -->
 <section class="lang-section">
   <div class="main">
@@ -787,39 +660,6 @@ footer p { font-size: 0.8rem; }
       <div class="lang-card"><div class="lang-flag">🇹🇭</div><div class="lang-icon">ไทย</div><div class="lang-name">泰文</div><div class="lang-dir">TH ↔ CN / EN</div></div>
       <div class="lang-card"><div class="lang-flag">🇻🇳</div><div class="lang-icon">VI</div><div class="lang-name">越南文</div><div class="lang-dir">VI ↔ CN / EN</div></div>
       <div class="lang-card"><div class="lang-flag">🇮🇩</div><div class="lang-icon">ID</div><div class="lang-name">印尼文</div><div class="lang-dir">ID ↔ CN / EN</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Customer Benefits ===== -->
-<section class="benefit-section">
-  <div class="main">
-    <div class="sec-block" style="padding: 0 0 0;">
-      <span class="sec-label">客户收益</span>
-      <h2>选择 Panlingo，<br>获得可长期复用的语言资产</h2>
-      <p class="sec-desc">以"交付可信赖的本地化内容"为准则，让每一分投入都有可感知的回报。</p>
-    </div>
-    <div class="benefit-grid">
-      <div class="benefit-card">
-        <div class="benefit-num">01</div>
-        <h4>质量与效率兼得</h4>
-        <p>在保证专业准确的基础上，通过人机协同缩短交付周期，获得可长期复用的翻译成果，让后续迭代成本递减、效率递增。</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-num">02</div>
-        <h4>品牌表达全球一致</h4>
-        <p>统一术语、风格与品牌语音，确保品牌在各市场传递一致的形象与调性，有效规避跨文化传播中的理解偏差与误读风险。</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-num">03</div>
-        <h4>内容真正融入本地</h4>
-        <p>译文精准适配目标市场的阅读习惯与文化语境，让用户读得懂、用得顺，提升好感度与信任感。</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-num">04</div>
-        <h4>语言资产持续增值</h4>
-        <p>每一轮交付都在积累术语库、翻译记忆库和风格指南，缩短新项目启动周期，降低内外部沟通成本，让今天的投入成为明天效率的起点。</p>
-      </div>
     </div>
   </div>
 </section>
@@ -879,7 +719,7 @@ footer p { font-size: 0.8rem; }
       <p class="sec-desc">从人机共译、母语级人工翻译，到润色、创译、文案策划、字幕和多媒体、多语言排版，以及术语库和风格指南建设。每项服务均说明适用场景和最终交付物。</p>
     </div>
 
-    <div class="service-block">
+    <div class="service-block cat-a">
       <div class="service-cat-title"><span class="service-cat-num">A</span>语言核心服务</div>
       <div class="service-list">
         <div class="service-item">
@@ -927,7 +767,7 @@ footer p { font-size: 0.8rem; }
       </div>
     </div>
 
-    <div class="service-block">
+    <div class="service-block cat-b">
       <div class="service-cat-title"><span class="service-cat-num">B</span>语言资产管理</div>
       <div class="service-list">
         <div class="service-item">
@@ -963,7 +803,7 @@ footer p { font-size: 0.8rem; }
       </div>
     </div>
 
-    <div class="service-block" style="margin-bottom: 0;">
+    <div class="service-block cat-c" style="margin-bottom: 0;">
       <div class="service-cat-title"><span class="service-cat-num">C</span>多媒体与视觉服务</div>
       <div class="service-list">
         <div class="service-item">
@@ -1245,7 +1085,7 @@ footer p { font-size: 0.8rem; }
 </section>
 
 <!-- ===== Coop ===== -->
-<section>
+<section id="coop">
   <div class="main">
     <div class="sec-block" style="padding: 0 0 0;">
       <span class="sec-label">合作模式</span>
@@ -1263,54 +1103,6 @@ footer p { font-size: 0.8rem; }
       <div class="pricing-factors">
         <span class="pricing-factor">目标语言对</span><span class="pricing-factor">内容类型与体量</span><span class="pricing-factor">行业专业程度</span><span class="pricing-factor">交付周期</span><span class="pricing-factor">审校层级</span><span class="pricing-factor">排版及多媒体制作</span>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FAQ (answerbit inspired) ===== -->
-<section class="faq-section" id="faq" style="background: var(--blue-light);">
-  <div class="main">
-    <div class="sec-block" style="padding: 0 0 0; text-align: center;">
-      <span class="sec-label">常见问题</span>
-      <h2>关于 Panlingo 服务，您可能想知道</h2>
-    </div>
-    <div class="faq-list">
-      <details class="faq-item" open="">
-        <summary>Panlingo 的服务覆盖哪些行业？</summary>
-        <div class="faq-body">
-          <p>重点服务行业包括：游戏与互动娱乐、软件/SaaS、AI 与科技工具、视频与数字内容、消费电子与智能硬件、汽车与高端制造、奢侈品与时尚，以及大型跨国企业及全球品牌。我们为每个行业匹配深耕该领域的母语译员，确保专业术语精准、表达地道。</p>
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary>人机共译和纯人工翻译有什么区别？</summary>
-        <div class="faq-body">
-          <p>人机共译是 AI 效率与专家判断深度结合的模式，适用于时间紧、量大或内容格式固定的稿件（如软件 UI 字符串、游戏补丁文本、AI 提示词库）。纯人工翻译由深耕目标行业的母语译员执笔，适用于含有行业黑话、艰深术语的复杂稿件（如高端制造技术规格书、汽车合规文件、游戏剧情对话）。我们会根据内容特性与预算范围灵活配置人机资源。</p>
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary>客户数据安全如何保障？</summary>
-        <div class="faq-body">
-          <p>项目数据存储于符合 SOC 2 标准的安全云环境；所有文件传输采用加密通道，访问权限按项目角色分级管理。客户内容及翻译成果绝不用于训练任何 AI 模型。默认保留期限不超过项目结束之日起 90 天，可按要求彻底删除。仅在客户明确授权的前提下使用第三方生成式 AI 工具，若客户要求禁用则提供纯人工处理方案。</p>
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary>翻译记忆库和术语库对长期合作有什么价值？</summary>
-        <div class="faq-body">
-          <p>每一轮交付都在积累术语库、翻译记忆库和风格指南。当客户进入持续更新阶段，我们优先调用翻译记忆库匹配内容以降低成本，依据既定术语库与风格指南处理增量内容。资产随业务生长，每一次合作都在扩充客户的专属语言资产，缩短新项目启动周期，降低沟通成本，让昨天的投入成为明天效率的起点。</p>
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary>报价是如何计算的？</summary>
-        <div class="faq-body">
-          <p>Panlingo 按实际工作量计费，基础单位为字数或时长。具体费用根据目标语言对、内容类型与体量、行业专业程度、交付周期、审校层级、排版及多媒体制作需求等因素综合评估。对于长期合作客户，可协商按月或季度结算，也可采用预付费字数包或年度框架协议，以简化财务流程并锁定排期优先级。</p>
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary>字体设计与品牌视觉是附加服务吗？</summary>
-        <div class="faq-body">
-          <p>是的。依托母公司汉仪的字体基因，我们提供多语言品牌字体定制、字体授权与整体品牌视觉输出，作为多语言内容服务的可扩展附加能力。确保翻译内容与视觉呈现的全球统一，涵盖游戏 IP 定制字体、SaaS 品牌字体系统、AI 产品界面字体、汽车品牌多语言标识等场景。</p>
-        </div>
-      </details>
     </div>
   </div>
 </section>
